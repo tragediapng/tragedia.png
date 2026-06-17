@@ -399,7 +399,7 @@ header .container{
 
     display:inline-block;
 
-    font-size:.9rem;
+    font: size 15px;;
 
     font-weight:600;
 
@@ -502,11 +502,7 @@ header .container{
 
 }
 
-.hero-image:hover img{
 
-    transform:scale(1.02);
-
-}
 
 
 /* ==========================================================
@@ -1047,9 +1043,7 @@ footer p:first-child{
 
 }
 
-.juicer-feed img:hover{
 
-    transform:scale(1.03);
 
 }
 
@@ -1508,15 +1502,6 @@ transform:translateY(-2px);
 
 }
 
-.hero-image img:hover{
-
-transform:scale(1.02);
-
-}
-
-.juicer-feed img:hover{
-
-transform:scale(1.04);
 
 }
 
