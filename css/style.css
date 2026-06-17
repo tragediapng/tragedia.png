@@ -1,25 +1,758 @@
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#F7F4EF;--text:#111;--muted:#666;--pink:#EF7070;--container:1100px;--radius:22px}
-html{scroll-behavior:smooth}
-body{font-family:Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-img{display:block;width:100%}
-a{text-decoration:none;color:inherit}
-.container{width:min(var(--container),90%);margin:auto}
-section{padding:80px 0}
-header{position:sticky;top:0;background:rgba(247,244,239,.92);backdrop-filter:blur(10px);z-index:100}
-header .container{height:80px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:1.4rem;font-weight:700}
-.nav{display:none}
-.hero{padding-top:30px}
-.hero-image img{border-radius:var(--radius);aspect-ratio:4/5;object-fit:cover}
-.hero-text{margin-top:40px;max-width:600px}
-.hello{display:block;margin-bottom:16px}
-h1{font-size:clamp(3rem,8vw,5.5rem);line-height:.92}
-h2{font-size:clamp(2rem,6vw,3rem);margin-bottom:24px}
-.line{width:120px;height:6px;background:var(--pink);border-radius:999px;margin:24px 0}
-p{color:var(--muted);font-size:1.05rem}
-.hero-button,.button{display:inline-flex;align-items:center;justify-content:center;padding:15px 26px;border-radius:999px;border:1px solid #111;margin-top:30px}
-.primary,.hero-button{background:#111;color:#fff}
-.about p,.flash p,.booking p{max-width:650px;margin-bottom:18px}
-.buttons{display:flex;flex-direction:column;gap:14px;margin-top:30px}
-.booking-footer{margin-top:60px;padding-top:24px;border-top:1px solid #ddd;color:#777}
+/* ==================================================
+   tragedia.png
+   STYLE.CSS
+   PART 1
+================================================== */
+
+/* --------------------
+RESET
+-------------------- */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#F5F2EC;
+    color:#171717;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font:inherit;
+}
+
+/* --------------------
+VARIABLES
+-------------------- */
+
+:root{
+
+    --bg:#F5F2EC;
+    --text:#171717;
+    --grey:#707070;
+    --accent:#EF8C86;
+
+    --container:92%;
+
+    --radius:30px;
+
+    --transition:.35s ease;
+
+}
+
+/* --------------------
+LAYOUT
+-------------------- */
+
+.container{
+
+    width:var(--container);
+
+    margin:auto;
+
+    max-width:1200px;
+
+}
+
+section{
+
+    padding:100px 0;
+
+}
+
+h1,h2,h3{
+
+    font-weight:700;
+
+    letter-spacing:-0.05em;
+
+}
+
+h1{
+
+    font-size:clamp(3.4rem,12vw,5.5rem);
+
+    line-height:.9;
+
+}
+
+h2{
+
+    font-size:2.4rem;
+
+    line-height:1;
+
+    margin-bottom:28px;
+
+}
+
+p{
+
+    color:var(--grey);
+
+    font-size:1.05rem;
+
+    max-width:640px;
+
+}
+
+/* --------------------
+HEADER
+-------------------- */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    background:rgba(245,242,236,.92);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(0,0,0,.05);
+
+}
+
+header .container{
+
+    height:78px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo{
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.logo:hover{
+
+    opacity:.7;
+
+}
+
+.nav{
+
+    display:none;
+
+}
+
+/* --------------------
+HERO
+-------------------- */
+
+.hero{
+
+    padding-top:24px;
+
+}
+
+.hero-content{
+
+    position:relative;
+
+}
+
+.hero-image img{
+
+    aspect-ratio:4/5;
+
+    object-fit:cover;
+
+    border-radius:34px;
+
+}
+
+.hero-text{
+
+    width:92%;
+
+    margin:-90px auto 0;
+
+    background:var(--bg);
+
+    padding:30px;
+
+    border-radius:30px;
+
+    position:relative;
+
+}
+
+.hello{
+
+    display:block;
+
+    color:var(--accent);
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+.line{
+
+    width:110px;
+
+    height:6px;
+
+    border-radius:999px;
+
+    background:var(--accent);
+
+    margin:28px 0;
+
+}
+
+.hero p{
+
+    margin-bottom:10px;
+
+}
+
+/* --------------------
+SECTION SPACING
+-------------------- */
+
+.gallery{
+
+    padding-top:60px;
+
+}
+
+.about{
+
+    padding-top:80px;
+
+}
+
+.flash{
+
+    padding-top:90px;
+
+}
+
+.booking{
+
+    padding-top:110px;
+
+}/* ==================================================
+   PART 2
+   GALLERY • ABOUT • FLASH • BOOKING
+================================================== */
+
+
+/* --------------------
+GALLERY
+-------------------- */
+
+.gallery h2{
+
+    margin-bottom:36px;
+
+}
+
+.gallery .container{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.elfsight-app-f08ba4d0-fc90-4f00-ad42-cc328c5b302f{
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    box-shadow:0 18px 50px rgba(0,0,0,.05);
+
+}
+
+/* --------------------
+ABOUT
+-------------------- */
+
+.about .container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.about h2{
+
+    margin-bottom:10px;
+
+}
+
+.about p{
+
+    color:var(--grey);
+
+    max-width:650px;
+
+}
+
+/* --------------------
+FLASH
+-------------------- */
+
+.flash p{
+
+    margin-bottom:36px;
+
+}
+
+.flash-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.flash-item{
+
+    aspect-ratio:1;
+
+    border-radius:26px;
+
+    background:#ece7df;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#999;
+
+    font-size:.95rem;
+
+    transition:var(--transition);
+
+}
+
+.flash-item:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* --------------------
+BOOKING
+-------------------- */
+
+.booking h2{
+
+    max-width:500px;
+
+}
+
+.booking p{
+
+    margin-bottom:32px;
+
+}
+
+.buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    margin-top:34px;
+
+}
+
+.button{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:58px;
+
+    padding:0 28px;
+
+    border-radius:999px;
+
+    border:1px solid var(--text);
+
+    background:transparent;
+
+    color:var(--text);
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.button:hover{
+
+    background:var(--text);
+
+    color:white;
+
+}
+
+.button.primary{
+
+    background:var(--text);
+
+    color:white;
+
+}
+
+.button.primary:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* --------------------
+BOOKING FOOTER
+-------------------- */
+
+.booking-footer{
+
+    margin-top:80px;
+
+    padding-top:26px;
+
+    border-top:1px solid rgba(0,0,0,.08);
+
+}
+
+.booking-footer p{
+
+    font-size:.9rem;
+
+    color:#9a9a9a;
+
+    margin-bottom:4px;
+
+}
+
+/* --------------------
+IMAGES
+-------------------- */
+
+.hero-image img,
+
+.flash-item,
+
+.elfsight-app-f08ba4d0-fc90-4f00-ad42-cc328c5b302f{
+
+    transition:var(--transition);
+
+}
+
+.hero-image img:hover{
+
+    transform:scale(1.01);
+
+}
+
+.flash-item:hover{
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}/* ==================================================
+   PART 3
+   FINAL POLISH
+================================================== */
+
+
+/* --------------------
+GENERAL SPACING
+-------------------- */
+
+section:first-of-type{
+
+    padding-top:30px;
+
+}
+
+section:last-of-type{
+
+    padding-bottom:120px;
+
+}
+
+.hero + .gallery{
+
+    padding-top:40px;
+
+}
+
+.gallery + .about{
+
+    padding-top:90px;
+
+}
+
+.about + .flash{
+
+    padding-top:90px;
+
+}
+
+.flash + .booking{
+
+    padding-top:100px;
+
+}
+
+
+/* --------------------
+TEXT
+-------------------- */
+
+.hero p{
+
+    max-width:520px;
+
+}
+
+.about p{
+
+    margin-bottom:20px;
+
+}
+
+.about p:last-child{
+
+    margin-bottom:0;
+
+}
+
+
+/* --------------------
+BUTTONS
+-------------------- */
+
+.button{
+
+    cursor:pointer;
+
+}
+
+.button:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* --------------------
+IMAGES
+-------------------- */
+
+.hero-image{
+
+    overflow:hidden;
+
+    border-radius:34px;
+
+}
+
+.hero-image img{
+
+    transition:transform .6s ease;
+
+}
+
+.hero-image:hover img{
+
+    transform:scale(1.02);
+
+}
+
+
+/* --------------------
+LINKS
+-------------------- */
+
+a{
+
+    transition:all .3s ease;
+
+}
+
+.logo:hover{
+
+    color:var(--accent);
+
+}
+
+.button:hover{
+
+    border-color:var(--text);
+
+}
+
+
+/* --------------------
+SCROLLBAR
+-------------------- */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#efe9e1;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#c9beb1;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#b4a495;
+
+}
+
+
+/* --------------------
+SELECTION
+-------------------- */
+
+::selection{
+
+    background:var(--accent);
+
+    color:white;
+
+}
+
+
+/* --------------------
+FOCUS
+-------------------- */
+
+a:focus-visible,
+
+button:focus-visible{
+
+    outline:2px solid var(--accent);
+
+    outline-offset:4px;
+
+}
+
+
+/* --------------------
+SMOOTH TRANSITIONS
+-------------------- */
+
+img,
+
+.button,
+
+.logo,
+
+a{
+
+    transition:var(--transition);
+
+}
+
+
+/* --------------------
+PREMIUM DETAILS
+-------------------- */
+
+.hero-text{
+
+    box-shadow:0 15px 50px rgba(0,0,0,.03);
+
+}
+
+.booking-footer{
+
+    opacity:.8;
+
+}
+
+
+/* --------------------
+READY FOR DOODLES
+-------------------- */
+
+/*
+
+Sem neskôr pridáme:
+
+.doodle-star
+
+.doodle-flower
+
+.doodle-worm
+
+atď.
+
+*/
+
+
+/* ==================================================
+END
+================================================== */
