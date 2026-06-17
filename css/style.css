@@ -123,55 +123,43 @@ HEADER
 -------------------- */
 
 header{
-
     position:sticky;
-
     top:0;
-
     z-index:999;
-
     background:rgba(245,242,236,.92);
-
     backdrop-filter:blur(12px);
-
     border-bottom:1px solid rgba(0,0,0,.05);
-
 }
 
 header .container{
-
-    height:78px;
-
+    height:68px;
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
 }
 
 .logo{
-
-    font-size:1.2rem;
-
+    font-size:.85rem;
     font-weight:700;
-
-    transition:var(--transition);
-
-}
-
-.logo:hover{
-
-    opacity:.7;
-
+    letter-spacing:-0.02em;
+    white-space:nowrap;
 }
 
 .nav{
-
-    display:none;
-
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
+.nav a{
+    font-size:.82rem;
+    font-weight:500;
+    transition:var(--transition);
+}
+
+.nav a:hover{
+    color:var(--accent);
+}
 /* --------------------
 HERO
 -------------------- */
@@ -256,7 +244,7 @@ SECTION SPACING
 
 }
 
-.about{
+.about me{
 
     padding-top:80px;
 
@@ -274,7 +262,7 @@ SECTION SPACING
 
 }/* ==================================================
    PART 2
-   GALLERY • ABOUT • FLASH • BOOKING
+   GALLERY • ABOUT ME • FLASH • BOOKING
 ================================================== */
 
 
@@ -307,10 +295,10 @@ GALLERY
 }
 
 /* --------------------
-ABOUT
+ABOUT ME
 -------------------- */
 
-.about .container{
+.about me .container{
 
     display:flex;
 
@@ -326,7 +314,7 @@ ABOUT
 
 }
 
-.about p{
+.about me p{
 
     color:var(--grey);
 
@@ -534,13 +522,13 @@ section:last-of-type{
 
 }
 
-.gallery + .about{
+.gallery + .about me {
 
     padding-top:90px;
 
 }
 
-.about + .flash{
+.about me + .flash{
 
     padding-top:90px;
 
@@ -563,13 +551,13 @@ TEXT
 
 }
 
-.about p{
+.about me p{
 
     margin-bottom:20px;
 
 }
 
-.about p:last-child{
+.about me   p:last-child{
 
     margin-bottom:0;
 
