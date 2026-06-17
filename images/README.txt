@@ -1,0 +1,1 @@
+Place studio.jpg and other images here.
