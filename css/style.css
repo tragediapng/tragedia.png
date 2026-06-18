@@ -574,17 +574,19 @@ footer p:first-child{
     }
 
     /* Pridané a upravené skryté doodles */
-    .hero-ornament {
-        --doodle-size: 150px;
-        left: -10px;
-        top: 20px;
-        z-index: 2000;
-    }
+    .hero-ornament{
+    --doodle-size:200px;
+
+    left:10px;
+    top:-35px;
+
+    z-index:2000;
+}
 
     
 
     .gallery-drops {
-        --doodle-size: 100px;
+        --doodle-size: 150px;
         right: -10px;
         top: 150px;
         z-index: 0;
@@ -606,26 +608,37 @@ footer p:first-child{
     }
 
     .about-butterfly{
-        --doodle-size: 150px;
+        --doodle-size: 190px;
         top: auto; 
         bottom: -20px;
         right: -10px;
     }
 
    .about-grass{
-    --doodle-size: 260px;
-    left: -120px;
-    bottom: -80px;
+    --doodle-size:350px;
+
+    left:-30px;
+    right:auto;
+
+    top:300px;
+    bottom:auto;
+
+    z-index:0;
     }
 
-    .gallery-rainbow{
-    --doodle-size: 120px;
-    left: -25px;
-    top: 65px;
-}   
+   .gallery-rainbow{
+    --doodle-size:250px;
 
+    left:-5px;
+    right:auto;
+
+    top:120px;
+    bottom:auto;
+
+    z-index:0;
+}
     .flash-apple{
-        --doodle-size: 180px;
+        --doodle-size: 250px;
         right: -20px;
         top: -30px;
     }
@@ -637,7 +650,7 @@ footer p:first-child{
     }
 
     .booking-heart{
-    --doodle-size: 140px;
+    --doodle-size: 200px;
     right: 10px;
     top: 130px;
     bottom: auto;
