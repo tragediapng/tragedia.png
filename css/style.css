@@ -651,7 +651,7 @@ footer p:first-child{
     }
 
     .booking-heart{
-    --doodle-size: 200px;
+    --doodle-size: 300px;
     right: 10px;
     top: 130px;
     bottom: auto;
