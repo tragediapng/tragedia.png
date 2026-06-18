@@ -382,7 +382,7 @@ header .container{
 
 
 .gallery-drops{
-    --doodle-size: clamp(110px, 16vw, 180px);
+    --doodle-size: clamp(200px, 16vw, 250px);
     --doodle-opacity: .50;
 
     right: -10;
