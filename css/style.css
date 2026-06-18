@@ -586,7 +586,7 @@ footer p:first-child{
     
 
     .gallery-drops {
-    --doodle-size:70px;
+    --doodle-size:150px;
 
     right:5px;
     top:40px;
@@ -603,17 +603,17 @@ footer p:first-child{
     }
 
     .hero-flower{
-        --doodle-size: 300px;
+        --doodle-size: 350px;
         left: -80px;
         bottom: -60px;
         z-index: 2000;
     }
 
     .about-butterfly{
-        --doodle-size: 190px;
-        top: auto; 
-        bottom: -20px;
-        right: -10px;
+        --doodle-size: 200px;
+        left: -80px;
+        bottom: -60px;
+        
     }
 
    .about-grass{
@@ -624,10 +624,13 @@ footer p:first-child{
 }
 
  .gallery-rainbow{
-    --doodle-size:120px;
+    --doodle-size:150px;
 
-    left:-55px;
-    top:20px;
+    left: 10px;
+    top: 40px;
+
+    right:auto;
+    bottom:auto;
 }
     .flash-apple{
         --doodle-size: 250px;
@@ -636,9 +639,10 @@ footer p:first-child{
     }
 
     .flash-weed{
-        --doodle-size: 160px;
-        left: -80px;
-        bottom: -60px;
+        --doodle-size: 250px;
+        top: auto; 
+        bottom: -20px;
+        right: -10px;
     }
 
     .booking-heart{
