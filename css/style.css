@@ -586,13 +586,14 @@ footer p:first-child{
 
     
 
-    .gallery-drops {
-    --doodle-size:150px;
+   .gallery-drops{
+    --doodle-size:65px;
 
-    right:5px;
-    top:40px;
+    right:15px;
+    left:auto;
 
-    z-index:0;
+    top:145px;
+    bottom:auto;
 }
 
     /* Zvyšok pôvodných mobilných doodles */
@@ -610,12 +611,15 @@ footer p:first-child{
         z-index: 2000;
     }
 
-    .about-butterfly{
-        --doodle-size: 200px;
-        left: -80px;
-        bottom: -60px;
-        
-    }
+   .about-butterfly{
+    --doodle-size:110px;
+
+    left:auto;
+    right:-15px;
+
+    top:330px;
+    bottom:auto;
+}
 
    .about-grass{
     --doodle-size:260px;
@@ -625,10 +629,10 @@ footer p:first-child{
 }
 
  .gallery-rainbow{
-    --doodle-size:150px;
+    --doodle-size:120px;
 
-    left: 10px;
-    top: 40px;
+    left:25px;
+    top:220px;
 
     right:auto;
     bottom:auto;
