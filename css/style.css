@@ -586,11 +586,13 @@ footer p:first-child{
     
 
     .gallery-drops {
-        --doodle-size: 150px;
-        right: -10px;
-        top: 150px;
-        z-index: 0;
-    }
+    --doodle-size:70px;
+
+    right:5px;
+    top:40px;
+
+    z-index:0;
+}
 
     /* Zvyšok pôvodných mobilných doodles */
     .hero-stars{
@@ -615,27 +617,17 @@ footer p:first-child{
     }
 
    .about-grass{
-    --doodle-size:350px;
+    --doodle-size:260px;
 
-    left:-30px;
-    right:auto;
+    left:-20px;
+    top:140px;
+}
 
-    top:300px;
-    bottom:auto;
+ .gallery-rainbow{
+    --doodle-size:120px;
 
-    z-index:0;
-    }
-
-   .gallery-rainbow{
-    --doodle-size:250px;
-
-    left:-5px;
-    right:auto;
-
-    top:120px;
-    bottom:auto;
-
-    z-index:0;
+    left:-55px;
+    top:20px;
 }
     .flash-apple{
         --doodle-size: 250px;
