@@ -282,7 +282,7 @@ header .container{
     left: -120px;
     right: auto;
 
-    z-index: 5;
+    z-index: 2000;
 }
 
 .hero-flower{
@@ -538,6 +538,7 @@ footer p:first-child{
 
     .hero-stars{
         right:-104px;
+        z-index:2000;
     }
 }
 
