@@ -112,27 +112,6 @@ IMAGE HOVER
 
 
 /* -----------------------
-PARALLAX DOODLES
------------------------ */
-
-const doodles=document.querySelectorAll(".doodle");
-
-window.addEventListener("scroll",()=>{
-
-const scroll=window.pageYOffset;
-
-doodles.forEach((doodle,index)=>{
-
-const speed=(index%5+1)*0.05;
-
-doodle.style.transform=`translateY(${scroll*speed}px)`;
-
-});
-
-});
-
-
-/* -----------------------
 HEADER SHADOW
 ----------------------- */
 

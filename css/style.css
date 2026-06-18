@@ -1,18 +1,22 @@
 /* ==========================================================
    tragedia.png
-   STYLE.CSS
 ========================================================== */
 
-
-/* ==========================================================
-   RESET
-========================================================== */
+:root{
+    --bg:#f5f2ec;
+    --text:#181818;
+    --muted:#56514c;
+    --accent:#d66d61;
+    --paper:#fffaf4;
+    --border:#181818;
+    --container:1180px;
+    --section:clamp(76px, 11vw, 150px);
+    --ease:.24s ease;
+}
 
 *,
 *::before,
 *::after{
-    margin:0;
-    padding:0;
     box-sizing:border-box;
 }
 
@@ -21,9 +25,10 @@ html{
 }
 
 body{
+    margin:0;
     overflow-x:hidden;
-    background:#F5F2EC;
-    color:#181818;
+    background:var(--bg);
+    color:var(--text);
     font-family:Helvetica, Arial, sans-serif;
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
@@ -32,7 +37,7 @@ body{
 
 img{
     display:block;
-    width:100%;
+    max-width:100%;
 }
 
 a{
@@ -40,103 +45,115 @@ a{
     text-decoration:none;
 }
 
-ul{
-    list-style:none;
-}
-
 button,
 input,
 textarea{
     font:inherit;
-    border:none;
-    background:none;
 }
-
-
-
-/* ==========================================================
-   VARIABLES
-========================================================== */
-
-:root{
-
-    --bg:#F5F2EC;
-
-    --text:#181818;
-
-    --text-light:#4E4E4E;
-
-    --accent:#D66D61;
-
-    --border:#181818;
-
-    --container:1180px;
-
-    --transition:.28s ease;
-
-}
-
-
-
-/* ==========================================================
-   LAYOUT
-========================================================== */
 
 .container{
-    width:min(92%, var(--container));
+    width:min(90%, var(--container));
     margin-inline:auto;
 }
 
 section{
     position:relative;
-    padding:100px 0;
+    padding:var(--section) 0;
 }
 
-
-
-/* ==========================================================
-   TYPOGRAPHY
-========================================================== */
+h1,
+h2,
+p{
+    margin:0;
+}
 
 h1{
-    font-size:3rem;
-    line-height:.92;
-    letter-spacing:-.05em;
+    max-width:9ch;
+    font-size:clamp(3rem, 7vw, 5.8rem);
+    line-height:.95;
     font-weight:700;
+    letter-spacing:0;
 }
 
 h2{
-    font-size:2rem;
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
     line-height:1;
-    letter-spacing:-.04em;
     font-weight:700;
+    letter-spacing:0;
 }
 
 p{
     max-width:650px;
-    font-size:1rem;
-    line-height:1.75;
-    color:var(--text-light);
+    color:var(--muted);
+    font-size:clamp(1rem, 1.5vw, 1.08rem);
+    line-height:1.78;
 }
-
-
-
-/* ==========================================================
-   RED LINE
-========================================================== */
 
 .line{
     width:58px;
     height:2px;
+    margin:24px 0 30px;
     background:var(--accent);
-    margin:22px 0 30px;
 }
 
+::selection{
+    background:var(--accent);
+    color:#fff;
+}
 
+a:focus-visible,
+button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:4px;
+}
 
-/* ==========================================================
-   BUTTONS
-========================================================== */
+/* Header */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(245, 242, 236, .94);
+    border-bottom:1px solid rgba(24, 24, 24, .16);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+}
+
+header .container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:72px;
+    gap:22px;
+}
+
+.logo{
+    flex:0 0 auto;
+    font-size:.88rem;
+    font-weight:700;
+    white-space:nowrap;
+    transition:color var(--ease);
+}
+
+.logo:hover,
+.nav a:hover,
+.nav a.active{
+    color:var(--accent);
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:clamp(14px, 3vw, 32px);
+}
+
+.nav a{
+    font-size:.82rem;
+    transition:color var(--ease);
+}
+
+/* Buttons */
 
 .buttons{
     display:flex;
@@ -152,894 +169,34 @@ p{
     min-height:54px;
     padding:0 28px;
     border:1px solid var(--border);
-    transition:var(--transition);
+    background:transparent;
+    transition:background var(--ease), border-color var(--ease), color var(--ease), transform var(--ease);
 }
 
 .button:hover{
-    background:#181818;
-    color:white;
+    background:var(--text);
+    color:#fff;
+    transform:translateY(-1px);
 }
 
 .button.primary{
-    background:#181818;
-    color:white;
+    background:var(--text);
+    color:#fff;
 }
 
 .button.primary:hover{
-    background:var(--accent);
     border-color:var(--accent);
+    background:var(--accent);
 }
 
-
-
-/* ==========================================================
-   GLOBAL DOODLES
-========================================================== */
-
-.doodle{
-    position:absolute;
-    pointer-events:none;
-    user-select:none;
-}
-
-
-
-/* ==========================================================
-   DESKTOP
-========================================================== */
-
-@media (min-width:1024px){
-
-    .container{
-        width:min(90%, var(--container));
-    }
-
-    section{
-        padding:140px 0;
-    }
-
-    h1{
-        font-size:5rem;
-    }
-
-    h2{
-        font-size:3rem;
-    }
-
-    p{
-        font-size:1.05rem;
-    }
-
-}/* ==========================================================
-   HEADER
-========================================================== */
-
-header{
-
-    position:sticky;
-
-    top:0;
-
-    z-index:1000;
-
-    background:rgba(245,242,236,.94);
-
-    backdrop-filter:blur(8px);
-
-    -webkit-backdrop-filter:blur(8px);
-
-    border-bottom:1px solid rgba(24,24,24,.18);
-
-}
-
-header .container{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    height:72px;
-
-}
-
-
-/* ==========================================================
-   LOGO
-========================================================== */
-
-.logo{
-
-    font-size:.82rem;
-
-    font-weight:700;
-
-    letter-spacing:-.03em;
-
-    white-space:nowrap;
-
-    transition:color .25s ease;
-
-}
-
-.logo:hover{
-
-    color:var(--accent);
-
-}
-
-
-
-/* ==========================================================
-   NAVIGATION
-========================================================== */
-
-.nav{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:20px;
-
-}
-
-.nav a{
-
-    position:relative;
-
-    font-size:.8rem;
-
-    color:var(--text);
-
-    transition:color .25s ease;
-
-}
-
-.nav a:hover{
-
-    color:var(--accent);
-
-}
-
-
-/* underline */
-
-.nav a{
-
-    font-size:.8rem;
-
-    color:var(--text);
-
-    transition:color .2s ease;
-
-}
-
-.nav a:hover{
-
-    color:var(--accent);
-
-}
-
-
-
-/* ==========================================================
-   MOBILE
-========================================================== */
-
-@media (max-width:640px){
-
-    header .container{
-
-        height:64px;
-
-    }
-
-    .logo{
-
-        font-size:.78rem;
-
-    }
-
-    .nav{
-
-        gap:14px;
-
-    }
-
-    .nav a{
-
-        font-size:.74rem;
-
-    }
-
-}
-
-
-
-/* ==========================================================
-   DESKTOP
-========================================================== */
-
-@media (min-width:1024px){
-
-    header .container{
-
-        height:74px;
-
-    }
-
-    .logo{
-
-        font-size:.88rem;
-
-    }
-
-    .nav{
-
-        gap:30px;
-
-    }
-
-    .nav a{
-
-        font-size:.82rem;
-
-    }
-
-}/* ==========================================================
-   HERO
-========================================================== */
-
-.hero{
-
-    padding-top:40px;
-
-}
-
-.hero .container{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-
-
-/* ==========================================================
-   HERO LAYOUT
-========================================================== */
-
-.hero-content{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:24px;
-
-}
-
-
-
-/* ==========================================================
-   HERO IMAGE
-========================================================== */
-
-.hero-image{
-
-    border:1px solid var(--border);
-
-    overflow:hidden;
-
-    background:white;
-
-}
-
-.hero-image img{
-
-    display:block;
-
-    width:100%;
-
-    aspect-ratio:4/5;
-
-    object-fit:cover;
-
-}
-
-
-
-/* ==========================================================
-   HERO CARD
-========================================================== */
-
-.hero-text{
-
-    position:relative;
-
-    background:var(--bg);
-
-    border:1px solid var(--border);
-
-    padding:32px;
-
-    margin-top:-42px;
-
-    margin-left:18px;
-
-    width:calc(100% - 36px);
-
-    z-index:3;
-
-}
-
-.hero-text h1{
-
-    margin-bottom:18px;
-
-}
-
-.hero-text p{
-
-    max-width:420px;
-
-}
-
-.hero-text .line{
-
-    margin:20px 0 24px;
-
-}
-
-
-
-/* ==========================================================
-   HERO BUTTONS
-========================================================== */
-
-.hero .buttons{
-
-    margin-top:34px;
-
-}
-
-
-
-/* ==========================================================
-   DESKTOP
-========================================================== */
-
-@media (min-width:1024px){
-
-.hero{
-
-    padding-top:70px;
-
-}
-
-.hero-content{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    align-items:center;
-
-    gap:90px;
-
-}
-
-.hero-image{
-
-    order:2;
-
-}
-
-.hero-text{
-
-    order:1;
-
-    width:118%;
-
-    margin:0;
-
-    margin-right:-120px;
-
-    padding:56px;
-
-}
-
-.hero-image img{
-
-    aspect-ratio:4/5;
-
-}
-
-}/* ==========================================================
-   ABOUT
-========================================================== */
-
-.about{
-
-    position:relative;
-
-}
-
-.about .container{
-
-    position:relative;
-
-    z-index:2;
-
-    max-width:760px;
-
-}
-
-.about h2{
-
-    margin-bottom:16px;
-
-}
-
-.about .line{
-
-    margin-bottom:30px;
-
-}
-
-.about p{
-
-    margin-bottom:26px;
-
-}
-
-.about p:last-child{
-
-    margin-bottom:0;
-
-}
-
-
-
-/* ==========================================================
-   DESKTOP
-========================================================== */
-
-@media (min-width:1024px){
-
-.about{
-
-    padding:150px 0;
-
-}
-
-.about .container{
-
-    max-width:820px;
-
-}
-
-.about p{
-
-    max-width:700px;
-
-}
-
-}/* ==========================================================
-   GALLERY
-========================================================== */
-
-.gallery{
-
-    position:relative;
-
-}
-
-.gallery .container{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-
-
-/* ==========================================================
-   INTRO
-========================================================== */
-
-.gallery-intro{
-
-    max-width:680px;
-
-    margin:0 auto 60px;
-
-    text-align:center;
-
-}
-
-.gallery-intro h2{
-
-    margin-bottom:18px;
-
-}
-
-.gallery-intro .line{
-
-    margin:0 auto 26px;
-
-}
-
-.gallery-intro p{
-
-    margin:0 auto;
-
-    max-width:520px;
-
-}
-
-.gallery-note{
-
-    display:block;
-
-    margin-top:14px;
-
-    font-size:.82rem;
-
-    font-style:italic;
-
-    color:#6b6b6b;
-
-}
-
-
-
-/* ==========================================================
-   GRID
-========================================================== */
-
-.gallery-grid{
-
-    column-count:2;
-
-    column-gap:8px;
-
-}
-
-.gallery-item{
-
-    display:block;
-
-    break-inside:avoid;
-
-    margin-bottom:8px;
-
-    border:2px solid var(--accent);
-
-    overflow:hidden;
-
-    background:white;
-
-    transition:.25s ease;
-
-}
-
-.gallery-item:hover{
-
-    transform:translateY(-2px);
-
-}
-
-.gallery-item img{
-
-    display:block;
-
-    width:100%;
-
-}
-
-
-
-/* ==========================================================
-   DESKTOP
-========================================================== */
-
-@media (min-width:900px){
-
-.gallery-grid{
-
-    column-count:3;
-
-    column-gap:10px;
-
-}
-
-.gallery-item{
-
-    margin-bottom:10px;
-
-}
-
-}
-
-/* ==========================================================
-   FLASH
-========================================================== */
-
-.flash{
-
-    position:relative;
-
-}
-
-.flash .container{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-.flash h2{
-
-    margin-bottom:16px;
-
-}
-
-.flash .line{
-
-    margin-bottom:30px;
-
-}
-
-.flash p{
-
-    max-width:620px;
-
-    margin-bottom:48px;
-
-}
-
-
-
-/* ==========================================================
-   FLASH GRID
-========================================================== */
-
-.flash-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:18px;
-
-}
-
-.flash-item{
-
-    border:1px solid var(--accent);
-
-    background:white;
-
-    aspect-ratio:1;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    overflow:hidden;
-
-}
-
-.flash-item img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-}
-
-
-
-/* ==========================================================
-   EMPTY STATE
-========================================================== */
-
-.flash-placeholder{
-
-    color:#7b7b7b;
-
-    font-size:.9rem;
-
-    font-style:italic;
-
-    text-align:center;
-
-}
-
-
-
-/* ==========================================================
-   DESKTOP
-========================================================== */
-
-@media (min-width:900px){
-
-.flash-grid{
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:22px;
-
-}
-
-}/* ==========================================================
-   BOOKING
-========================================================== */
-
-.booking{
-
-    position:relative;
-
-}
-
-.booking .container{
-
-    position:relative;
-
-    z-index:2;
-
-    max-width:760px;
-
-}
-
-.booking h2{
-
-    margin-bottom:16px;
-
-}
-
-.booking .line{
-
-    margin-bottom:30px;
-
-}
-
-.booking p{
-
-    max-width:560px;
-
-}
-
-.booking .buttons{
-
-    margin-top:40px;
-
-}
-
-.booking .button{
-
-    min-width:170px;
-
-}
-
-
-
-/* ==========================================================
-   FOOTER
-========================================================== */
-
-footer{
-
-    border-top:1px solid rgba(24,24,24,.12);
-
-    padding:32px 0;
-
-}
-
-footer .container{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-}
-
-footer p{
-
-    max-width:none;
-
-    font-size:.85rem;
-
-    color:#666;
-
-}
-
-footer p:first-child{
-
-    color:var(--text);
-
-    font-weight:700;
-
-}
-
-
-
-/* ==========================================================
-   MOBILE
-========================================================== */
-
-@media (max-width:700px){
-
-.booking .buttons{
-
-    flex-direction:column;
-
-}
-
-.booking .button{
-
-    width:100%;
-
-}
-
-footer .container{
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-}
-
-}
-
-
-
-/* ==========================================================
-   DESKTOP
-========================================================== */
-
-@media (min-width:1024px){
-
-.booking{
-
-    padding:150px 0;
-
-}
-
-.booking .container{
-
-    max-width:820px;
-
-}
-
-}/* ==========================================================
-   DOODLES
-========================================================== */
+/* Doodles */
 
 .hero,
 .about,
 .gallery,
 .flash,
 .booking{
-
     isolation:isolate;
-
 }
 
 .hero .container,
@@ -1047,277 +204,388 @@ footer .container{
 .gallery .container,
 .flash .container,
 .booking .container{
-
     position:relative;
-
     z-index:2;
-
 }
 
 .doodle{
-
     position:absolute;
-
-    z-index:-1;
-
+    z-index:1;
+    width:var(--doodle-size, 150px);
+    max-width:none;
+    height:auto;
     pointer-events:none;
-
     user-select:none;
-
-    opacity:.20;
-
+    opacity:var(--doodle-opacity, .28);
 }
 
+/* Hero */
 
+.hero{
+    padding-top:clamp(34px, 7vw, 82px);
+}
 
-/* ==========================================================
-   HERO
-========================================================== */
+.hero-content{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    align-items:center;
+}
+
+.hero-image{
+    position:relative;
+    z-index:1;
+    overflow:visible;
+    border:1px solid var(--border);
+    background:#fff;
+}
+
+.hero-image > img:first-child{
+    width:100%;
+    aspect-ratio:4 / 5;
+    object-fit:cover;
+}
+
+.hero-text{
+    position:relative;
+    z-index:3;
+    width:min(94%, 620px);
+    margin:-44px auto 0;
+    padding:clamp(28px, 6vw, 58px);
+    border:1px solid var(--border);
+    background:var(--paper);
+}
+
+.hero-text p{
+    max-width:420px;
+}
 
 .hero-stars{
-
-    width:120px;
-
-    top:40px;
-
-    right:2%;
-
-}
-
-.hero-ornament{
-
-    width:240px;
-
-    top:180px;
-
-    left:-130px;
-
-    opacity:.20;
-
-    transform:rotate(-8deg);
-
-}
-
-.hero-drops{
-
-    width:90px;
-
-    bottom:90px;
-
-    right:-25px;
-
+    --doodle-size:clamp(92px, 22vw, 180px);
+    --doodle-opacity:.48;
+    top:5%;
+    right:-8%;
+    z-index:2;
 }
 
 .hero-flower{
-
-    display:none;
-
-}
-
-
-
-/* ==========================================================
-   ABOUT
-========================================================== */
-
-.about-butterfly{
-
-    width:140px;
-
-    top:50px;
-
-    right:3%;
-
-}
-
-.about-grass{
-
-     width:320px;
-
-    left:-180px;
-
-    bottom:-80px;
-
-}
-
-.about-flower{
-
-    display:none;
-
-}
-
-
-
-/* ==========================================================
-   GALLERY
-========================================================== */
-
-.gallery-rainbow{
-
-    width:200px;
-
-    left:-90px;
-
-    top:120px;
-
-
-}
-
-.gallery-drops{
-
-    width:90px;
-
-    bottom:80px;
-
-    right:-20px;
-
-}
-
-
-
-/* ==========================================================
-   FLASH
-========================================================== */
-
-.flash-apple{
-
-    width:110px;
-
-    top:30px;
-
-    right:4%;
-
-}
-
-
-
-/* ==========================================================
-   BOOKING
-========================================================== */
-
-.booking-heart{
-
-    width:90px;
-
-    left:-20px;
-
-    top:30px;
-
-}
-
-.booking-flower{
-
-    width:650px;
-
-    right:-480px;
-
-    bottom:-260px;
-
-    opacity:.20;
-
-}
-
-
-
-/* ==========================================================
-   DESKTOP
-========================================================== */
-
-@media (min-width:1024px){
-
-.hero-stars{
-
-    width:150px;
-
+    --doodle-size:clamp(210px, 46vw, 440px);
+    --doodle-opacity:.24;
+    left:max(-18vw, -150px);
+    bottom:2%;
+    z-index:0;
 }
 
 .hero-ornament{
+    --doodle-size:clamp(112px, 18vw, 230px);
+    --doodle-opacity:.18;
+    top:14%;
+    left:4%;
+    z-index:0;
+    transform:rotate(-10deg);
+}
 
-    width:280px;
+.hero-drops{
+    --doodle-size:clamp(92px, 16vw, 160px);
+    --doodle-opacity:.36;
+    right:4%;
+    bottom:10%;
+    z-index:0;
+}
 
+/* About */
+
+.about .container,
+.booking .container{
+    max-width:820px;
+}
+
+.about p + p{
+    margin-top:26px;
 }
 
 .about-butterfly{
-
-    width:180px;
-
+    --doodle-size:clamp(94px, 16vw, 170px);
+    --doodle-opacity:.27;
+    top:38px;
+    right:5%;
 }
 
 .about-grass{
+    --doodle-size:clamp(220px, 42vw, 470px);
+    --doodle-opacity:.28;
+    left:max(-18vw, -150px);
+    bottom:-70px;
+    z-index:0;
+}
 
-    width:320px;
+/* Gallery */
 
+.gallery-intro{
+    max-width:680px;
+    margin:0 auto clamp(44px, 7vw, 70px);
+    text-align:center;
+}
+
+.gallery-intro .line{
+    margin-inline:auto;
+}
+
+.gallery-intro p{
+    margin-inline:auto;
+    max-width:520px;
+}
+
+.gallery-note{
+    margin-top:14px;
+    color:#716b64;
+    font-size:.88rem;
+    font-style:italic;
+}
+
+.gallery-grid{
+    column-count:2;
+    column-gap:10px;
+}
+
+.gallery-item{
+    display:block;
+    overflow:hidden;
+    break-inside:avoid;
+    margin-bottom:10px;
+    border:2px solid var(--accent);
+    background:#fff;
+    transition:transform var(--ease);
+}
+
+.gallery-item:hover{
+    transform:translateY(-2px);
+}
+
+.gallery-item img{
+    width:100%;
+    height:auto;
 }
 
 .gallery-rainbow{
+    --doodle-size:clamp(145px, 24vw, 260px);
+    --doodle-opacity:.42;
+    left:max(-8vw, -65px);
+    top:16%;
+    z-index:0;
+}
 
-    width:220px;
+.gallery-drops{
+    --doodle-size:clamp(82px, 13vw, 135px);
+    --doodle-opacity:.28;
+    right:4%;
+    bottom:8%;
+    z-index:0;
+}
 
+/* Flash */
+
+.flash p{
+    margin-bottom:44px;
+}
+
+.flash-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:18px;
+}
+
+.flash-item,
+.flash-placeholder{
+    min-height:180px;
+    border:1px solid var(--accent);
+    background:var(--paper);
+}
+
+.flash-item{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    aspect-ratio:1;
+}
+
+.flash-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.flash-placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    grid-column:1 / -1;
+    max-width:none;
+    margin:0;
+    padding:34px;
+    color:#766f68;
+    font-size:.95rem;
+    font-style:italic;
+    text-align:center;
 }
 
 .flash-apple{
+    --doodle-size:clamp(350px, 50vw, 400px);
+    --doodle-opacity:.24;
+    top:42px;
+    right:6%;
+    z-index:0;
+}
 
-    width:140px;
+/* Booking */
 
+.booking p{
+    max-width:570px;
+}
+
+.booking .button{
+    min-width:170px;
 }
 
 .booking-heart{
-
-    width:120px;
-
+    --doodle-size:clamp(92px, 15vw, 135px);
+    --doodle-opacity:.26;
+    left:max(-5vw, -34px);
+    bottom:40px;
+    z-index:0;
 }
 
-}/* ==========================================================
-   FINAL POLISH
-========================================================== */
+/* Footer */
 
-
-/* ==========================================================
-   SELECTION
-========================================================== */
-
-::selection{
-
-    background:var(--accent);
-
-    color:white;
-
+footer{
+    border-top:1px solid rgba(24, 24, 24, .12);
+    padding:32px 0;
 }
 
-
-
-/* ==========================================================
-   FOCUS
-========================================================== */
-
-a:focus-visible,
-button:focus-visible{
-
-    outline:2px solid var(--accent);
-
-    outline-offset:4px;
-
+footer .container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
+footer p{
+    max-width:none;
+    color:#666;
+    font-size:.85rem;
+}
 
+footer p:first-child{
+    color:var(--text);
+    font-weight:700;
+}
 
+/* Responsive */
 
+@media (min-width:760px){
+    .gallery-grid{
+        column-count:3;
+        column-gap:12px;
+    }
 
+    .gallery-item{
+        margin-bottom:12px;
+    }
 
-/* ==========================================================
-   REDUCE MOTION
-========================================================== */
+    .flash-grid{
+        grid-template-columns:repeat(4, minmax(0, 1fr));
+        gap:22px;
+    }
+}
+
+@media (min-width:1024px){
+    .hero-content{
+        grid-template-columns:minmax(0, .92fr) minmax(0, 1fr);
+        gap:82px;
+    }
+
+    .hero-image{
+        order:2;
+    }
+
+    .hero-text{
+        order:1;
+        width:116%;
+        margin:0 -110px 0 0;
+    }
+
+    .hero-stars{
+        right:-58px;
+    }
+}
+
+@media (max-width:700px){
+    header .container{
+        min-height:64px;
+        width:min(94%, var(--container));
+    }
+
+    .logo{
+        font-size:.78rem;
+    }
+
+    .nav{
+        gap:12px;
+    }
+
+    .nav a{
+        font-size:.74rem;
+    }
+
+    .buttons,
+    .booking .buttons{
+        flex-direction:column;
+    }
+
+    .button,
+    .booking .button{
+        width:100%;
+    }
+
+    .hero-ornament,
+    .hero-drops,
+    .gallery-drops{
+        display:none;
+    }
+
+    .hero-stars{
+        right:-18px;
+    }
+
+    footer .container{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+
+@media (max-width:420px){
+    .nav{
+        gap:9px;
+    }
+
+    .nav a{
+        font-size:.7rem;
+    }
+
+    .hero-text{
+        width:100%;
+        margin-top:-32px;
+    }
+}
 
 @media (prefers-reduced-motion:reduce){
-
-*{
-
-    scroll-behavior:auto !important;
-
-    transition:none !important;
-
-    animation:none !important;
-
-}
-
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto !important;
+        transition:none !important;
+        animation:none !important;
+    }
 }
