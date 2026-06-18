@@ -569,6 +569,10 @@ footer p:first-child{
         width:100%;
     }
 
+    .hero, .about {
+        overflow-x: clip; 
+    }
+
     .hero-ornament,
     .hero-drops,
     .gallery-drops{
@@ -576,44 +580,54 @@ footer p:first-child{
     }
 
     .hero-stars{
-        right:-68px;
+        --doodle-size: 100px;
+        right: -10px;
+        top: -60px;
     }
 
     .hero-flower{
-        left:-112px;
-        bottom:-100px;
+        --doodle-size: 260px;
+        left: -80px;
+        bottom: -60px;
+        z-index: 1;
     }
 
     .about-butterfly{
-        top:142px;
-        right:-86px;
+        --doodle-size: 90px;
+        top: auto; 
+        bottom: -20px;
+        right: -10px;
     }
 
    .about-grass{
-    left:-300px;
-    bottom:-165px;
-}
+        --doodle-size: 260px;
+        left: -120px;
+        bottom: -80px;
+    }
 
     .gallery-rainbow{
-        left:-215px;
-        top:-10px;
+        --doodle-size: 120px;
+        left: -60px;
+        top: -20px;
     }
 
     .flash-apple{
-        right:-90px;
-        top:-24px;
+        --doodle-size: 120px;
+        right: -20px;
+        top: -30px;
     }
 
     .flash-weed{
-        left:-230px;
-        bottom:-110px;
+        --doodle-size: 160px;
+        left: -80px;
+        bottom: -60px;
     }
 
     .booking-heart{
-    --doodle-size:180px;
-    right:-35px;
-    bottom:0px;
-}
+        --doodle-size: 140px;
+        right: -20px;
+        bottom: -20px;
+    }
 
     footer .container{
         flex-direction:column;
