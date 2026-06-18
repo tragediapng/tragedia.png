@@ -452,7 +452,7 @@ header .container{
 
 .flash-weed{
     --doodle-size:220px;
-    left:-140px;
+    left:-220px;
     bottom:-70px;
 }
 
@@ -587,7 +587,7 @@ footer p:first-child{
     
 
    .gallery-drops{
-    --doodle-size:65px;
+    --doodle-size:120px;
 
     right:5px;
     left:auto;
@@ -612,7 +612,7 @@ footer p:first-child{
     }
 
   .about-butterfly{
-    --doodle-size:110px;
+    --doodle-size:250px;
 
     left:20px;
     right:auto;
