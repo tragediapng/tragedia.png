@@ -109,27 +109,6 @@ revealObserver.observe(item);
 IMAGE HOVER
 ----------------------- */
 
-document.querySelectorAll(".hero-image img").forEach(image=>{
-
-image.addEventListener("mousemove",(e)=>{
-
-const rect=image.getBoundingClientRect();
-
-const x=((e.clientX-rect.left)/rect.width-.5)*6;
-
-const y=((e.clientY-rect.top)/rect.height-.5)*6;
-
-image.style.transform=`scale(1.03) rotateY(${x}deg) rotateX(${-y}deg)`;
-
-});
-
-image.addEventListener("mouseleave",()=>{
-
-image.style.transform="scale(1)";
-
-});
-
-});
 
 
 /* -----------------------
