@@ -375,20 +375,17 @@ header .container{
 }
 
 .gallery-rainbow{
-    --doodle-size: clamp(360px, 54vw, 700px);
-    --doodle-opacity: .50;
-
-    left: -120px;
-    top: -30px;
-
-    z-index: 0;
+    --doodle-size:160px;   /* zmenší */
+    left:-260px;           /* viac doľava */
+    top:20px;
 }
+
 
 .gallery-drops{
     --doodle-size: clamp(110px, 16vw, 180px);
     --doodle-opacity: .50;
 
-    right: -40px;
+    right: -10;
     left: auto;
 
     top: 220px;
@@ -454,11 +451,9 @@ header .container{
 }
 
 .flash-weed{
-    --doodle-size:clamp(350px, 50vw, 650px);
-    --doodle-opacity:.50;
-  left: max(-18vw, -220px);
-    bottom:-150px;
-    z-index:0;
+    --doodle-size:220px;
+    left:-140px;
+    bottom:-70px;
 }
 
 /* Booking */
@@ -594,10 +589,10 @@ footer p:first-child{
         right:-86px;
     }
 
-    .about-grass{
-        left:-220px;
-        bottom:-165px;
-    }
+   .about-grass{
+    left:-300px;
+    bottom:-165px;
+}
 
     .gallery-rainbow{
         left:-215px;
@@ -615,9 +610,10 @@ footer p:first-child{
     }
 
     .booking-heart{
-        right:-74px;
-        bottom:-255px;
-    }
+    --doodle-size:180px;
+    right:-35px;
+    bottom:0px;
+}
 
     footer .container{
         flex-direction:column;
