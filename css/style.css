@@ -197,7 +197,20 @@ header .container{
 .flash,
 .booking{
     isolation:isolate;
+}
+
+.gallery,
+.flash,
+.booking{
     overflow:hidden;
+}
+
+.about{
+    overflow:visible;
+}
+
+.hero{
+    overflow:visible;
 }
 
 .hero .container,
@@ -217,7 +230,7 @@ header .container{
     height:auto;
     pointer-events:none;
     user-select:none;
-    opacity:var(--doodle-opacity, .28);
+    opacity:var(--doodle-opacity, .50);
 }
 
 /* Hero */
@@ -262,37 +275,30 @@ header .container{
 }
 
 .hero-stars{
-    --doodle-size:clamp(128px, 24vw, 250px);
-    --doodle-opacity:.82;
-    top:3%;
-    right:clamp(-96px, -8vw, -38px);
-    z-index:2;
+    --doodle-size: clamp(128px, 24vw, 250px);
+    --doodle-opacity: .50;
+
+    top: -100px;
+    left: -120px;
+    right: auto;
+
+    z-index: 5;
 }
 
 .hero-flower{
-    --doodle-size:clamp(350px, 54vw, 640px);
-    --doodle-opacity:.29;
-    left:max(-18vw, -140px);
-    bottom:-150px;
-    z-index:2;
+    --doodle-size: clamp(350px, 54vw, 640px);
+    --doodle-opacity: .50;
+
+    right: -180px;
+    left: auto;
+
+    bottom: -180px;
+
+    transform: scaleX(-1);
+
+    z-index: 100;
 }
 
-.hero-ornament{
-    --doodle-size:clamp(112px, 18vw, 230px);
-    --doodle-opacity:.18;
-    top:14%;
-    left:4%;
-    z-index:0;
-    transform:rotate(-10deg);
-}
-
-.hero-drops{
-    --doodle-size:clamp(92px, 16vw, 160px);
-    --doodle-opacity:.36;
-    right:4%;
-    bottom:10%;
-    z-index:0;
-}
 
 /* About */
 
@@ -307,14 +313,14 @@ header .container{
 
 .about-butterfly{
     --doodle-size:clamp(280px, 34vw, 480px);
-    --doodle-opacity:.36;
+    --doodle-opacity:.50;
     top:118px;
     right:clamp(-84px, -2vw, -18px);
 }
 
 .about-grass{
     --doodle-size:clamp(440px, 68vw, 860px);
-    --doodle-opacity:.32;
+    --doodle-opacity:.50;
     left:max(-28vw, -300px);
     bottom:-220px;
     z-index:0;
@@ -369,20 +375,28 @@ header .container{
 }
 
 .gallery-rainbow{
-    --doodle-size:clamp(360px, 54vw, 700px);
-    --doodle-opacity:.32;
-    left:max(-25vw, -320px);
-    top:-52px;
-    z-index:0;
+    --doodle-size: clamp(360px, 54vw, 700px);
+    --doodle-opacity: .50;
+
+    left: -120px;
+    top: -30px;
+
+    z-index: 0;
 }
 
 .gallery-drops{
-    --doodle-size:clamp(82px, 13vw, 135px);
-    --doodle-opacity:.28;
-    right:4%;
-    bottom:8%;
-    z-index:0;
+    --doodle-size: clamp(110px, 16vw, 180px);
+    --doodle-opacity: .50;
+
+    right: -40px;
+    left: auto;
+
+    top: 220px;
+    bottom: auto;
+
+    z-index: 0;
 }
+
 
 /* Flash */
 
@@ -433,7 +447,7 @@ header .container{
 
 .flash-apple{
     --doodle-size:clamp(250px, 32vw, 430px);
-    --doodle-opacity:.32;
+    --doodle-opacity:.50;
     top:-52px;
     right:clamp(-92px, -2vw, -18px);
     z-index:0;
@@ -441,8 +455,8 @@ header .container{
 
 .flash-weed{
     --doodle-size:clamp(350px, 50vw, 650px);
-    --doodle-opacity:.22;
-    left:max(-26vw, -310px);
+    --doodle-opacity:.50;
+  left: max(-18vw, -220px);
     bottom:-150px;
     z-index:0;
 }
@@ -459,7 +473,7 @@ header .container{
 
 .booking-heart{
     --doodle-size:clamp(240px, 34vw, 420px);
-    --doodle-opacity:.28;
+    --doodle-opacity:.50;
     left:auto;
     right:clamp(-80px, 4vw, 72px);
     top:auto;
