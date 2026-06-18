@@ -575,21 +575,16 @@ footer p:first-child{
 
     /* Pridané a upravené skryté doodles */
     .hero-ornament {
-        --doodle-size: 70px;
+        --doodle-size: 150px;
         left: -10px;
         top: 20px;
-        z-index: 0;
+        z-index: 2000;
     }
 
-    .hero-drops {
-        --doodle-size: 60px;
-        right: -10px;
-        top: 420px;
-        z-index: 0;
-    }
+    
 
     .gallery-drops {
-        --doodle-size: 70px;
+        --doodle-size: 100px;
         right: -10px;
         top: 150px;
         z-index: 0;
@@ -600,36 +595,37 @@ footer p:first-child{
         --doodle-size: 100px;
         right: -10px;
         top: -60px;
+        z-index: 2000;
     }
 
     .hero-flower{
-        --doodle-size: 260px;
+        --doodle-size: 300px;
         left: -80px;
         bottom: -60px;
-        z-index: 1;
+        z-index: 2000;
     }
 
     .about-butterfly{
-        --doodle-size: 90px;
+        --doodle-size: 150px;
         top: auto; 
         bottom: -20px;
         right: -10px;
     }
 
    .about-grass{
-        --doodle-size: 260px;
-        left: -120px;
-        bottom: -80px;
+    --doodle-size: 260px;
+    left: -120px;
+    bottom: -80px;
     }
 
     .gallery-rainbow{
-        --doodle-size: 120px;
-        left: -60px;
-        top: -20px;
-    }
+    --doodle-size: 120px;
+    left: -25px;
+    top: 65px;
+}   
 
     .flash-apple{
-        --doodle-size: 120px;
+        --doodle-size: 180px;
         right: -20px;
         top: -30px;
     }
@@ -641,10 +637,12 @@ footer p:first-child{
     }
 
     .booking-heart{
-        --doodle-size: 140px;
-        right: -20px;
-        bottom: -20px;
-    }
+    --doodle-size: 140px;
+    right: 10px;
+    top: 130px;
+    bottom: auto;
+}
+    
 
     footer .container{
         flex-direction:column;
