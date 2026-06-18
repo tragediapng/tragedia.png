@@ -375,8 +375,8 @@ header .container{
 }
 
 .gallery-rainbow{
-    --doodle-size:160px;   /* zmenší */
-    left:-260px;           /* viac doľava */
+    --doodle-size:160px;
+    left:-260px;
     top:20px;
 }
 
@@ -573,12 +573,29 @@ footer p:first-child{
         overflow-x: clip; 
     }
 
-    .hero-ornament,
-    .hero-drops,
-    .gallery-drops{
-        display:none;
+    /* Pridané a upravené skryté doodles */
+    .hero-ornament {
+        --doodle-size: 70px;
+        left: -10px;
+        top: 20px;
+        z-index: 0;
     }
 
+    .hero-drops {
+        --doodle-size: 60px;
+        right: -10px;
+        top: 420px;
+        z-index: 0;
+    }
+
+    .gallery-drops {
+        --doodle-size: 70px;
+        right: -10px;
+        top: 150px;
+        z-index: 0;
+    }
+
+    /* Zvyšok pôvodných mobilných doodles */
     .hero-stars{
         --doodle-size: 100px;
         right: -10px;
