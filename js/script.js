@@ -71,6 +71,63 @@ window.addEventListener("scroll",()=>{
 
 
 /* -----------------------
+FLASH GALLERY
+----------------------- */
+
+const flashGrid = document.querySelector("#flash-grid");
+
+if (flashGrid) {
+    const flashFolderUrl = "https://api.github.com/repos/tragediapng/tragedia.png/contents/images/flash?ref=main";
+    const imageFile = /\.(avif|gif|jpe?g|png|webp)$/i;
+
+    const readableName = (filename) => filename
+        .replace(/\.[^.]+$/, "")
+        .replace(/[-_]+/g, " ")
+        .trim();
+
+    fetch(flashFolderUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("The flash folder could not be loaded.");
+            }
+
+            return response.json();
+        })
+        .then((files) => {
+            const images = files.filter((file) => file.type === "file" && imageFile.test(file.name));
+
+            if (!images.length) {
+                return;
+            }
+
+            flashGrid.replaceChildren();
+
+            images.forEach((file) => {
+                const item = document.createElement("a");
+                const image = document.createElement("img");
+                const label = readableName(file.name) || "Flash design";
+
+                item.className = "flash-item";
+                item.href = file.download_url;
+                item.target = "_blank";
+                item.rel = "noreferrer";
+                item.setAttribute("aria-label", `Open ${label}`);
+
+                image.src = file.download_url;
+                image.alt = label;
+                image.loading = "lazy";
+
+                item.append(image);
+                flashGrid.append(item);
+            });
+        })
+        .catch(() => {
+            // The existing placeholder stays visible if GitHub is temporarily unavailable.
+        });
+}
+
+
+/* -----------------------
 REVEAL ON SCROLL
 ----------------------- */
 
