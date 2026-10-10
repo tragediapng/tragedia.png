@@ -418,9 +418,12 @@ header .container{
     column-gap:10px;
 }
 
-.flash-item,
+.flash-item{
+    border:1px solid rgba(24, 24, 24, .16);
+}
+
 .flash-placeholder{
-    border:2px solid var(--accent);
+    border:1px solid var(--accent);
 }
 
 .flash-placeholder{
