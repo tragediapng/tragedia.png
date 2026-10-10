@@ -258,6 +258,9 @@ const placeMobileDoodles = () => {
                 doodle.style.removeProperty(property);
             });
 
+            delete doodle.dataset.mobileSize;
+            delete doodle.dataset.mobileSide;
+
             if (doodle.dataset.originalSrc) {
                 doodle.src = doodle.dataset.originalSrc;
             }
@@ -290,18 +293,18 @@ const placeMobileDoodles = () => {
 
         const topSpace = Math.max(0, contentRect.top - sectionRect.top);
         const bottomSpace = Math.max(0, sectionRect.bottom - contentRect.bottom);
-        const topSlots = sectionDoodles.filter((doodle) => !doodle.closest(".hero-image"));
-        const placedTop = [];
-        const placedBottom = [];
+        const sectionEdgeDoodles = sectionDoodles.filter((doodle) => !doodle.closest(".hero-image"));
 
-        topSlots.forEach((doodle, index) => {
-            const useTop = topSlots.length === 1
+        sectionEdgeDoodles.forEach((doodle, index) => {
+            const useTop = sectionEdgeDoodles.length === 1
                 ? topSpace >= bottomSpace
                 : index % 2 === 0;
             const availableSpace = useTop ? topSpace : bottomSpace;
-            const size = Math.min(randomBetween(44, 72), Math.max(24, availableSpace - 8));
+            const size = Number(doodle.dataset.mobileSize) || Math.min(randomBetween(44, 72), Math.max(24, availableSpace - 8));
             const position = Math.max(2, (availableSpace - size) / 2);
-            const side = Math.random() < 0.5 ? "left" : "right";
+            const side = doodle.dataset.mobileSide || (Math.random() < 0.5 ? "left" : "right");
+            doodle.dataset.mobileSize = String(size);
+            doodle.dataset.mobileSide = side;
 
             doodle.style.width = `${size}px`;
             doodle.style.maxHeight = `${Math.max(20, availableSpace - 6)}px`;
@@ -312,11 +315,11 @@ const placeMobileDoodles = () => {
             doodle.style.top = useTop ? `${position}px` : "auto";
             doodle.style.bottom = useTop ? "auto" : `${position}px`;
 
-            (useTop ? placedTop : placedBottom).push(doodle);
         });
 
         sectionDoodles.filter((doodle) => doodle.closest(".hero-image")).forEach((doodle) => {
-            const size = randomBetween(44, 68);
+            const size = Number(doodle.dataset.mobileSize) || randomBetween(44, 68);
+            doodle.dataset.mobileSize = String(size);
             doodle.style.width = `${size}px`;
             doodle.style.maxHeight = "72px";
             doodle.style.opacity = "0.35";
