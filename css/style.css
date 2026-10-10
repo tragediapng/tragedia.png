@@ -355,6 +355,18 @@ header .container{
     column-gap:10px;
 }
 
+.gallery-placeholder{
+    grid-column:1 / -1;
+    margin:0;
+    padding:28px;
+    border:1px solid var(--accent);
+    background:var(--paper);
+    color:#766f68;
+    font-size:.95rem;
+    font-style:italic;
+    text-align:center;
+}
+
 .gallery-item{
     display:block;
     overflow:hidden;
