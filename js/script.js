@@ -297,7 +297,8 @@ const placeMobileDoodles = () => {
                 "mobileSide",
                 "mobileOpacity",
                 "mobileRotation",
-                "mobileOffset"
+                "mobileOffset",
+                "mobileHorizontalOffset"
             ].forEach((property) => {
                 delete doodle.dataset[property];
             });
@@ -342,12 +343,14 @@ const placeMobileDoodles = () => {
             const maxOffset = Math.max(8, availableSpace - size - 12);
             const offset = Number(doodle.dataset.mobileOffset) || randomBetween(6, maxOffset);
             const side = doodle.dataset.mobileSide || (Math.random() < 0.5 ? "left" : "right");
+            const horizontalOffset = Number(doodle.dataset.mobileHorizontalOffset) || randomBetween(8, 20);
             const opacity = doodle.dataset.mobileOpacity || (0.30 + Math.random() * 0.16).toFixed(2);
             const rotation = Number(doodle.dataset.mobileRotation) || randomBetween(-10, 10);
 
             doodle.dataset.mobileSize = String(size);
             doodle.dataset.mobileOffset = String(offset);
             doodle.dataset.mobileSide = side;
+            doodle.dataset.mobileHorizontalOffset = String(horizontalOffset);
             doodle.dataset.mobileOpacity = opacity;
             doodle.dataset.mobileRotation = String(rotation);
 
@@ -356,8 +359,8 @@ const placeMobileDoodles = () => {
             doodle.style.opacity = opacity;
             doodle.style.zIndex = "1";
             doodle.style.transform = `rotate(${rotation}deg)`;
-            doodle.style.left = side === "left" ? `${randomBetween(8, 20)}px` : "auto";
-            doodle.style.right = side === "right" ? `${randomBetween(8, 20)}px` : "auto";
+            doodle.style.left = side === "left" ? `${horizontalOffset}px` : "auto";
+            doodle.style.right = side === "right" ? `${horizontalOffset}px` : "auto";
             doodle.style.top = useTop ? `${offset}px` : "auto";
             doodle.style.bottom = useTop ? "auto" : `${offset}px`;
         });
