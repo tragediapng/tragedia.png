@@ -231,19 +231,31 @@ const loadMobileDoodleImages = () => {
             return response.json();
         })
         .then((files) => {
-            const images = shuffle(files.filter((file) =>
+            const originalDoodleNames = new Set([
+                "duha.png",
+                "hviezdy.png",
+                "jablko.png",
+                "kvapky.png",
+                "kvet.png",
+                "motyl.png",
+                "ornament.png",
+                "plevel.png",
+                "porast.png",
+                "srdce.png"
+            ]);
+            const newImages = shuffle(files.filter((file) =>
                 file.type === "file" &&
                 doodleImagePattern.test(file.name) &&
-                !/^kvet\./i.test(file.name)
+                !originalDoodleNames.has(file.name.toLowerCase())
             ));
 
-            if (!images.length) {
+            if (!newImages.length) {
                 return;
             }
 
-            mobileDoodles.forEach((doodle, index) => {
-                const file = images[index % images.length];
-                doodle.src = file.download_url;
+            const replaceableDoodles = shuffle(mobileDoodles);
+            newImages.slice(0, replaceableDoodles.length).forEach((file, index) => {
+                replaceableDoodles[index].src = file.download_url;
             });
         })
         .catch(() => {
