@@ -71,6 +71,66 @@ window.addEventListener("scroll",()=>{
 
 
 /* -----------------------
+TATTOO GALLERY
+----------------------- */
+
+const galleryGrid = document.querySelector("#gallery-grid");
+
+if (galleryGrid) {
+    const galleryFolderUrl = "https://api.github.com/repos/tragediapng/tragedia.png/contents/images/tattoos?ref=main";
+    const galleryImageFile = /\\.(avif|gif|jpe?g|png|webp)$/i;
+
+    const readableGalleryName = (filename) => filename
+        .replace(/\\.[^.]+$/, "")
+        .replace(/[-_]+/g, " ")
+        .trim();
+
+    fetch(galleryFolderUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("The tattoo folder could not be loaded.");
+            }
+
+            return response.json();
+        })
+        .then((files) => {
+            const images = files
+                .filter((file) => file.type === "file" && galleryImageFile.test(file.name))
+                .sort((first, second) => first.name.localeCompare(second.name, undefined, { numeric: true, sensitivity: "base" }));
+
+            if (!images.length) {
+                galleryGrid.innerHTML = '<p class="gallery-placeholder">New work coming soon.</p>';
+                return;
+            }
+
+            galleryGrid.replaceChildren();
+
+            images.forEach((file) => {
+                const item = document.createElement("a");
+                const image = document.createElement("img");
+                const label = readableGalleryName(file.name) || "Tattoo by Dia";
+
+                item.className = "gallery-item";
+                item.href = "https://instagram.com/tragedia.png";
+                item.target = "_blank";
+                item.rel = "noreferrer";
+                item.setAttribute("aria-label", `See more work on Instagram: ${label}`);
+
+                image.src = file.download_url;
+                image.alt = label;
+                image.loading = "lazy";
+
+                item.append(image);
+                galleryGrid.append(item);
+            });
+        })
+        .catch(() => {
+            // Keep the loading placeholder if GitHub is temporarily unavailable.
+        });
+}
+
+
+/* -----------------------
 FLASH GALLERY
 ----------------------- */
 
