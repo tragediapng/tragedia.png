@@ -188,6 +188,177 @@ if (flashGrid) {
 
 
 /* -----------------------
+MOBILE DOODLE PLACEMENT
+----------------------- */
+
+const mobileDoodleQuery = window.matchMedia("(max-width: 700px)");
+const mobileDoodles = Array.from(document.querySelectorAll(".doodle:not(.hero-flower)"));
+const doodleImagePattern = /\.(avif|gif|jpe?g|png|webp)$/i;
+const doodleFolderUrl = "https://api.github.com/repos/tragediapng/tragedia.png/contents/images/doodles?ref=main";
+let mobileDoodlesLoaded = false;
+
+mobileDoodles.forEach((doodle) => {
+    doodle.dataset.originalSrc = doodle.getAttribute("src");
+});
+
+const randomBetween = (minimum, maximum) =>
+    Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+
+const shuffle = (items) => {
+    const shuffled = [...items];
+
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const swapIndex = Math.floor(Math.random() * (index + 1));
+        [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+    }
+
+    return shuffled;
+};
+
+const loadMobileDoodleImages = () => {
+    if (!mobileDoodleQuery.matches || mobileDoodlesLoaded) {
+        return;
+    }
+
+    mobileDoodlesLoaded = true;
+
+    fetch(doodleFolderUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("The doodle folder could not be loaded.");
+            }
+
+            return response.json();
+        })
+        .then((files) => {
+            const originalDoodleNames = new Set([
+                "duha.png",
+                "hviezdy.png",
+                "jablko.png",
+                "kvapky.png",
+                "kvet.png",
+                "motyl.png",
+                "ornament.png",
+                "plevel.png",
+                "porast.png",
+                "srdce.png"
+            ]);
+            const newImages = shuffle(files.filter((file) =>
+                file.type === "file" &&
+                doodleImagePattern.test(file.name) &&
+                !originalDoodleNames.has(file.name.toLowerCase())
+            ));
+
+            if (!newImages.length) {
+                return;
+            }
+
+            const replaceableDoodles = shuffle(mobileDoodles);
+            newImages.slice(0, replaceableDoodles.length).forEach((file, index) => {
+                replaceableDoodles[index].src = file.download_url;
+            });
+        })
+        .catch(() => {
+            // Keep the existing doodle images if GitHub is temporarily unavailable.
+        });
+};
+
+const placeMobileDoodles = () => {
+    if (!mobileDoodleQuery.matches) {
+        mobileDoodles.forEach((doodle) => {
+            ["top", "right", "bottom", "left", "width", "max-height", "opacity", "z-index"].forEach((property) => {
+                doodle.style.removeProperty(property);
+            });
+
+            delete doodle.dataset.mobileSize;
+            delete doodle.dataset.mobileSide;
+
+            if (doodle.dataset.originalSrc) {
+                doodle.src = doodle.dataset.originalSrc;
+            }
+        });
+
+        mobileDoodlesLoaded = false;
+        return;
+    }
+
+    loadMobileDoodleImages();
+
+    const sections = Array.from(document.querySelectorAll("section"));
+
+    sections.forEach((section) => {
+        const sectionDoodles = mobileDoodles.filter((doodle) =>
+            doodle.closest("section") === section
+        );
+
+        if (!sectionDoodles.length) {
+            return;
+        }
+
+        const sectionRect = section.getBoundingClientRect();
+        const content = section.querySelector(".container");
+        const contentRect = content?.getBoundingClientRect();
+
+        if (!contentRect) {
+            return;
+        }
+
+        const topSpace = Math.max(0, contentRect.top - sectionRect.top);
+        const bottomSpace = Math.max(0, sectionRect.bottom - contentRect.bottom);
+        const sectionEdgeDoodles = sectionDoodles.filter((doodle) => !doodle.closest(".hero-image"));
+
+        sectionEdgeDoodles.forEach((doodle, index) => {
+            const useTop = sectionEdgeDoodles.length === 1
+                ? topSpace >= bottomSpace
+                : index % 2 === 0;
+            const availableSpace = useTop ? topSpace : bottomSpace;
+            const size = Number(doodle.dataset.mobileSize) || Math.min(randomBetween(44, 72), Math.max(24, availableSpace - 8));
+            const position = Math.max(2, (availableSpace - size) / 2);
+            const side = doodle.dataset.mobileSide || (Math.random() < 0.5 ? "left" : "right");
+            doodle.dataset.mobileSize = String(size);
+            doodle.dataset.mobileSide = side;
+
+            doodle.style.width = `${size}px`;
+            doodle.style.maxHeight = `${Math.max(20, availableSpace - 6)}px`;
+            doodle.style.opacity = (0.24 + Math.random() * 0.12).toFixed(2);
+            doodle.style.zIndex = "1";
+            doodle.style.left = side === "left" ? "6px" : "auto";
+            doodle.style.right = side === "right" ? "6px" : "auto";
+            doodle.style.top = useTop ? `${position}px` : "auto";
+            doodle.style.bottom = useTop ? "auto" : `${position}px`;
+
+        });
+
+        sectionDoodles.filter((doodle) => doodle.closest(".hero-image")).forEach((doodle) => {
+            const size = Number(doodle.dataset.mobileSize) || randomBetween(44, 68);
+            doodle.dataset.mobileSize = String(size);
+            doodle.style.width = `${size}px`;
+            doodle.style.maxHeight = "72px";
+            doodle.style.opacity = "0.35";
+            doodle.style.zIndex = "2";
+            doodle.style.top = "8px";
+            doodle.style.right = "8px";
+            doodle.style.bottom = "auto";
+            doodle.style.left = "auto";
+        });
+    });
+};
+
+placeMobileDoodles();
+mobileDoodleQuery.addEventListener("change", placeMobileDoodles);
+
+let doodleResizeFrame;
+window.addEventListener("resize", () => {
+    if (!mobileDoodleQuery.matches) {
+        return;
+    }
+
+    window.cancelAnimationFrame(doodleResizeFrame);
+    doodleResizeFrame = window.requestAnimationFrame(placeMobileDoodles);
+});
+
+
+/* -----------------------
 REVEAL ON SCROLL
 ----------------------- */
 
