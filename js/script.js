@@ -78,10 +78,10 @@ const galleryGrid = document.querySelector("#gallery-grid");
 
 if (galleryGrid) {
     const galleryFolderUrl = "https://api.github.com/repos/tragediapng/tragedia.png/contents/images/tattoos?ref=main";
-    const galleryImageFile = /\\.(avif|gif|jpe?g|png|webp)$/i;
+    const galleryImageFile = /\.(avif|gif|jpe?g|png|webp)$/i;
 
     const readableGalleryName = (filename) => filename
-        .replace(/\\.[^.]+$/, "")
+        .replace(/\.[^.]+$/, "")
         .replace(/[-_]+/g, " ")
         .trim();
 
