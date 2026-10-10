@@ -355,21 +355,6 @@ header .container{
     column-gap:10px;
 }
 
-#tattoo-grid{
-    position:relative;
-    z-index:1;
-}
-
-.gallery-placeholder{
-    grid-column:1 / -1;
-    margin:0;
-    padding:28px 12px;
-    color:#766f68;
-    font-size:.95rem;
-    font-style:italic;
-    text-align:center;
-}
-
 .gallery-item{
     display:block;
     overflow:hidden;
