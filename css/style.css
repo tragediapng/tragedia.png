@@ -436,16 +436,8 @@ header .container{
     transition:transform var(--ease);
 }
 
-.flash-item:nth-child(3n + 1){
-    transform:rotate(-1deg);
-}
-
-.flash-item:nth-child(3n){
-    transform:rotate(1deg);
-}
-
 .flash-item:hover{
-    transform:translateY(-2px) rotate(0);
+    transform:translateY(-2px);
 }
 
 .flash-item img{
