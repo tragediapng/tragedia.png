@@ -294,13 +294,10 @@ const placeMobileDoodles = () => {
 
             delete doodle.dataset.mobileSize;
             delete doodle.dataset.mobileSide;
-
-            if (doodle.dataset.originalSrc) {
-                doodle.src = doodle.dataset.originalSrc;
-            }
+            delete doodle.dataset.mobileOpacity;
+            delete doodle.dataset.mobileOpacity;
         });
 
-        doodleSlotsLoaded = false;
         return;
     }
 
@@ -340,7 +337,9 @@ const placeMobileDoodles = () => {
 
             doodle.style.width = `${size}px`;
             doodle.style.maxHeight = `${Math.max(20, availableSpace - 6)}px`;
-            doodle.style.opacity = (0.24 + Math.random() * 0.12).toFixed(2);
+            const opacity = doodle.dataset.mobileOpacity || (0.24 + Math.random() * 0.12).toFixed(2);
+            doodle.dataset.mobileOpacity = opacity;
+            doodle.style.opacity = opacity;
             doodle.style.zIndex = "1";
             doodle.style.left = side === "left" ? "6px" : "auto";
             doodle.style.right = side === "right" ? "6px" : "auto";
