@@ -418,10 +418,6 @@ header .container{
     column-gap:10px;
 }
 
-.flash-item{
-    border:1px solid rgba(24, 24, 24, .16);
-}
-
 .flash-placeholder{
     border:1px solid var(--accent);
 }
