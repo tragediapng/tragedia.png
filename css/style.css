@@ -420,19 +420,20 @@ header .container{
 
 .flash-item,
 .flash-placeholder{
-    min-height:180px;
     border:2px solid var(--accent);
+}
+
+.flash-placeholder{
+    min-height:180px;
     background:var(--paper);
 }
 
 .flash-item{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:block;
     overflow:hidden;
     break-inside:avoid;
     margin-bottom:10px;
-    padding:clamp(12px, 2vw, 22px);
+    background:#fff;
     transition:transform var(--ease);
 }
 
