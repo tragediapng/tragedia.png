@@ -596,91 +596,12 @@ footer p:first-child{
         overflow-x: clip; 
     }
 
-    /* Keep mobile doodles in the section padding, away from text. */
-    .hero-ornament{
-        --doodle-size:64px;
-        --doodle-opacity:.30;
-        top:4px;
-        left:auto;
-        right:8px;
-        z-index:3;
-    }
-
-    .hero-stars{
-        --doodle-size:70px;
-        --doodle-opacity:.35;
-        top:6px;
-        right:6px;
-        left:auto;
-        z-index:2;
-    }
-
-    /* Keep the flower's existing mobile position. */
+    /* Keep the flower's existing mobile position; other doodles are placed by script. */
     .hero-flower{
         --doodle-size:350px;
         left:-80px;
         bottom:-60px;
         z-index:2000;
-    }
-
-    .about-butterfly{
-        --doodle-size:64px;
-        --doodle-opacity:.28;
-        top:6px;
-        right:6px;
-        left:auto;
-        bottom:auto;
-    }
-
-    .about-grass{
-        --doodle-size:66px;
-        --doodle-opacity:.28;
-        right:auto;
-        left:6px;
-        top:auto;
-        bottom:6px;
-    }
-
-    .gallery-rainbow{
-        --doodle-size:60px;
-        --doodle-opacity:.30;
-        top:6px;
-        left:6px;
-        right:auto;
-        bottom:auto;
-    }
-
-    .gallery-drops{
-        --doodle-size:60px;
-        --doodle-opacity:.30;
-        top:6px;
-        right:6px;
-        left:auto;
-        bottom:auto;
-    }
-
-    .flash-apple{
-        --doodle-size:64px;
-        --doodle-opacity:.30;
-        top:6px;
-        right:6px;
-    }
-
-    .flash-weed{
-        --doodle-size:64px;
-        --doodle-opacity:.30;
-        top:6px;
-        right:auto;
-        bottom:auto;
-        left:6px;
-    }
-
-    .booking-heart{
-        --doodle-size:68px;
-        --doodle-opacity:.30;
-        top:auto;
-        right:6px;
-        bottom:6px;
     }
 
     footer .container{
