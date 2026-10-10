@@ -71,6 +71,117 @@ window.addEventListener("scroll",()=>{
 
 
 /* -----------------------
+FLASH GALLERY
+----------------------- */
+
+const flashGrid = document.querySelector("#flash-grid");
+
+if (flashGrid) {
+    const flashFolderUrl = "https://api.github.com/repos/tragediapng/tragedia.png/contents/images/flash?ref=main";
+    const imageFile = /\.(avif|gif|jpe?g|png|webp)$/i;
+
+    const readableName = (filename) => filename
+        .replace(/\.[^.]+$/, "")
+        .replace(/[-_]+/g, " ")
+        .trim();
+
+    fetch(flashFolderUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("The flash folder could not be loaded.");
+            }
+
+            return response.json();
+        })
+        .then((files) => {
+            const images = files.filter((file) => file.type === "file" && imageFile.test(file.name));
+
+            if (!images.length) {
+                return;
+            }
+
+            flashGrid.replaceChildren();
+
+            images.forEach((file) => {
+                const item = document.createElement("a");
+                const image = document.createElement("img");
+                const label = readableName(file.name) || "Flash design";
+
+                item.className = "flash-item";
+                item.href = file.download_url;
+                item.target = "_blank";
+                item.rel = "noreferrer";
+                item.setAttribute("aria-label", `Open ${label}`);
+
+                image.src = file.download_url;
+                image.alt = label;
+                image.loading = "lazy";
+
+                item.append(image);
+                flashGrid.append(item);
+            });
+        })
+        .catch(() => {
+            // The existing placeholder stays visible if GitHub is temporarily unavailable.
+        });
+}
+
+
+/* -----------------------
+MY WORK GALLERY
+----------------------- */
+
+const tattooGrid = document.querySelector("#tattoo-grid");
+
+if (tattooGrid) {
+    const tattooFolderUrl = "https://api.github.com/repos/tragediapng/tragedia.png/contents/images/tattoos?ref=main";
+    const imageFile = /\\.(avif|gif|jpe?g|png|webp)$/i;
+
+    fetch(tattooFolderUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("The tattoo folder could not be loaded.");
+            }
+            return response.json();
+        })
+        .then((files) => {
+            const images = files
+                .filter((file) => file.type === "file" && imageFile.test(file.name))
+                .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: "base" }));
+
+            if (!images.length) {
+                tattooGrid.innerHTML = '<p class="gallery-placeholder">New tattoos coming soon.</p>';
+                return;
+            }
+
+            tattooGrid.replaceChildren();
+
+            images.forEach((file) => {
+                const item = document.createElement("a");
+                const image = document.createElement("img");
+                const label = file.name.replace(/\\.[^.]+$/, "").replace(/[-_]+/g, " ").trim();
+
+                item.className = "gallery-item";
+                item.href = "https://instagram.com/tragedia.png";
+                item.target = "_blank";
+                item.rel = "noreferrer";
+                item.setAttribute("aria-label", `See more tattoos by Dia on Instagram`);
+
+                image.src = file.download_url;
+                image.alt = label ? `Tattoo by Dia: ${label}` : "Tattoo by Dia";
+                image.loading = "lazy";
+
+                item.append(image);
+                tattooGrid.append(item);
+            });
+        })
+        .catch(() => {
+            tattooGrid.innerHTML = '<p class="gallery-placeholder">Tattoos could not be loaded right now. Please try again later.</p>';
+        });
+}
+
+
+/* -----------------------
 REVEAL ON SCROLL
 ----------------------- */
 
