@@ -596,6 +596,13 @@ footer p:first-child{
         overflow-x: clip; 
     }
 
+    .about,
+    .gallery,
+    .flash,
+    .booking{
+        padding-block:112px;
+    }
+
     /* Keep the flower's existing mobile position; other doodles are placed by script. */
     .hero-flower{
         --doodle-size:350px;
